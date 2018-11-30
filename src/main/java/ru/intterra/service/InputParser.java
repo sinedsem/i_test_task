@@ -19,7 +19,7 @@ public class InputParser {
 
         for (String line : lines) {
             String[] split = line.split("->");
-            if (split.length < 2) {
+            if (split.length < 2 || split[0].trim().isEmpty()) {
                 log.warn("Incorrect format: {}", line);
                 continue;
             }

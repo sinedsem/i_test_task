@@ -72,4 +72,12 @@ public class InputParserTest {
         assertEquals(makeEmails("foo@gmail.com", "ups@pisem.net"), result.get(1).getEmails());
     }
 
+    @Test
+    public void testNoName() {
+        List<User> result = inputParser.parse(Arrays.asList("user1 -> xxx@ya.ru, foo@gmail.com, lol@mail.ru", " -> foo@gmail.com, ups@pisem.net"));
+        assertEquals(1, result.size());
+        assertEquals("user1", result.get(0).getName());
+        assertEquals(makeEmails("xxx@ya.ru", "foo@gmail.com", "lol@mail.ru"), result.get(0).getEmails());
+    }
+
 }
