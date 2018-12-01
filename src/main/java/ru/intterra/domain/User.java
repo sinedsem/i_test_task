@@ -1,6 +1,7 @@
 package ru.intterra.domain;
 
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
@@ -10,7 +11,7 @@ public class User {
 
     private final long id = idGenerator++;
     private String name;
-    private Set<Email> emails = Collections.emptySet();
+    private Set<Email> emails = new HashSet<>();
 
     public User(String name) {
         this.name = name;
