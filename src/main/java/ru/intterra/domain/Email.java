@@ -6,8 +6,11 @@ public class Email {
 
     private final String value;
 
+    private final int hash;
+
     public Email(String value) {
         this.value = value.trim();
+        hash = Objects.hash(value.toLowerCase());
     }
 
     public String getValue() {
@@ -30,6 +33,6 @@ public class Email {
 
     @Override
     public int hashCode() {
-        return Objects.hash(value.toLowerCase());
+        return hash;
     }
 }

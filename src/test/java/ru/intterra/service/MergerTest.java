@@ -44,6 +44,16 @@ public class MergerTest {
     }
 
     @Test
+    public void testMultiple() {
+        User user1 = new User("aaa", makeEmails("1@bk.ru", "2@bk.ru"));
+        User user2 = new User("aaa", makeEmails("3@bk.ru", "4@bk.ru"));
+        User user3 = new User("aaa", makeEmails("1@bk.ru", "3@bk.ru"));
+        List<User> result = merger.merge(Arrays.asList(user1, user2, user3));
+        assertEquals(1, result.size());
+        assertEquals(makeEmails("1@bk.ru", "2@bk.ru", "3@bk.ru", "4@bk.ru"), result.get(0).getEmails());
+    }
+
+    @Test
     public void testSameUserAndEmailsList() {
         User user1 = new User("aaa", makeEmails("1@bk.ru", "2@bk.ru"));
         User user2 = new User("aaa", makeEmails("1@bk.ru", "2@bk.ru"));
